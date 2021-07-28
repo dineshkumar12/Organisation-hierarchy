@@ -18,5 +18,5 @@ ParseData.forEach((item) => {
         FormatedArray[item.key] = { name:item.name,title:item.title,key:item.key,childEmp:[]}
 })
 
-console.log("is this component called",FormatedArray)
+// console.log("is this component called",FormatedArray)
 

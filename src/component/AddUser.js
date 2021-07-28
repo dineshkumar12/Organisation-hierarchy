@@ -16,43 +16,72 @@ class AddUser extends React.Component {
     }
 
     handleSelect = (e)=> {
-        console.log("handling the select")
+        // console.log("handling the select")
         this.setState({title:e.target.value})
     }
 
-    handleLOP = ()=>{
-        console.log("this kjajdjf jasljd lfjasl;dj ;fjasd;lj fjlasdj jfl;kasdj fl;kasdj jfdas;lj sdkjk")
+     closeHandle = ()=>{
+        this.props.toggleAddUser(false);
     }
-    // handleAddUser = ()=> { 
-    //     console.log("state are",this.state.name,this.state.title,this.state.key);
-    //     this.props.toggleAddUser(false);
-    //     this.state.presentData.changeObj({type:"ADD_USER",data:{name:this.state.name,title:this.state.selectVal,key:this.state.key,parent:this.state.parent}})
-    // }
+
 
     render() {
-        console.log("%%%%%%%%%%%%%%ADD USER %%%%%%%%%%%%%")
+        // console.log("%%%%%%%%%%%%%%ADD USER %%%%%%%%%%%%%")
         return (
             <MyContextConsumer>
                 {
                     (presentData) =>{
-                        return <div>
+
+                        const handleAddUser =  ()=>{
+                            // console.log("state are",this.state.name,this.state.title,this.state.key);
+                            if(!this.state.key)
+                            {
+                                alert("Sorry, but Key field must not be empty")
+                            }
+                            else if(!presentData.data[this.state.key] && presentData.data[this.state.parent])
+                            {
+                                this.props.toggleAddUser(false);
+                                presentData.changeObj({type:"ADD_USER",data:{name:this.state.name,title:this.state.title,key:this.state.key,parent:this.state.parent}})    
+                            }
+                            else if(this.state.key<=1)
+                            {
+                                alert("Sorry but new Added Employee must have key greater than 1, Please try another")
+                            }
+                            else{
+                                alert("sorry but either Employee with key =  " + this.state.key + " already existed Or Boss for New Employee with key = " + this.state.parent +" is not Existed, Please try another")
+                            } 
+                        }
+                        return <div className="AddUSerDiv">
+                        <button className="CWCB" onClick={this.closeHandle}>Close Without Changes</button>
                 
-                        <label>Name</label>
-                        <input type="text" value={this.state.name} onChange={(e)=> this.setState({name:e.target.value})}/>
-                        <label>Key</label>
-                        <input type="number" value={this.state.key} onChange={(e)=> this.setState({key:e.target.value})}/>
-                        <label>parent</label>
-                        <input type="number" value={this.state.parent} onChange={(e)=> this.setState({parent:e.target.value})}/>
+                        <div className="AddUserCommonDiv">
+                            <label>Name</label>
+                            <input type="text" value={this.state.name} onChange={(e)=> this.setState({name:e.target.value})}/>
+                        </div>
+                        <br/>
+                        <div className="AddUserCommonDiv">
+                            <label>Key</label>
+                            <input type="number" value={this.state.key} onChange={(e)=> this.setState({key:e.target.value})}/>
+                        </div>
+                        <br/>
+                        <div className="AddUserCommonDiv">
+                            <label>parent</label>
+                            <input type="number" value={this.state.parent} onChange={(e)=> this.setState({parent:e.target.value})}/>
+                        </div>
+                        <br/>
+                        <div className="AddUserCommonDiv">
                         <label>Title</label>
                         <select value={this.state.title} onChange={this.handleSelect}>
                             {
                                 designationArray.map((item)=> <option value={item}>{item}</option>)
                             }
                         </select>
-                        <button onClick={()=> { console.log("state are",this.state.name,this.state.title,this.state.key);
+                        </div>
+                        <br/>
+                        <button onClick={handleAddUser}>AddUSer</button>
+                        {/* <button onClick={()=> { 
                                                 this.props.toggleAddUser(false);
-                                                this.handleLOP();
-                                                 presentData.changeObj({type:"ADD_USER",data:{name:this.state.name,title:this.state.title,key:this.state.key,parent:this.state.parent}})}}>submit</button>
+                                                 presentData.changeObj({type:"ADD_USER",data:{name:this.state.name,title:this.state.title,key:this.state.key,parent:this.state.parent}})}}>Add User</button> */}
                     </div>
                     }
                 }

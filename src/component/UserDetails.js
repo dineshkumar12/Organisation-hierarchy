@@ -10,8 +10,8 @@ class UserDetails extends React.Component {
     render() {
         const ParseData = Userdata.default
 
-        console.log("user data is ",Userdata)
-        console.log(ParseData)
+        // console.log("user data is ",Userdata)
+        // console.log(ParseData)
         return (
             <div>
                 <table>

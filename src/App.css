@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .App-logo {
@@ -37,9 +40,84 @@
   }
 }
 
+/* .org_tree{
+  display: block;
+    overflow: auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} */
 
 .org_tree li{
   float: left;
   text-align: center;
   list-style-type: none;
+  padding: 10px;
+  /* border: 1px solid; */
+  /* border-left: 1px solid; */
+  /* border-right: 1px solid; */
+  border-top: 1px solid;
 }
+
+.ThreeButton{
+  margin: 20px;
+    border: 1px solid;
+    padding: 20px;
+}
+
+.AddUSerDiv, .DeleteUserDiv, .PromoteUserDiv{
+  display: flex;
+    flex-direction: column;
+    /* align-items: baseline; */
+    justify-content: space-around;
+}
+
+.AddUserCommonDiv, .DeleteUserCommonDiv, .PromoteUserCommonDiv{
+  display: flex;
+    justify-content: space-between;
+}
+
+button{
+  margin: 0 5px;
+}
+
+input{
+  margin-left: 10px;
+}
+
+.CWCB{
+  margin:20px 0px;
+}
+
+/* .CWCB::after{
+  content: 'x';
+} */
+
+ul{
+  /* margin: 0; */
+  padding: 0;
+}
+
+/* .org_tree li::before,
+.org_tree li::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 50%;
+  border-top: 1px solid #ccc;
+  width: 50%;
+  height: 20px;
+}
+.org_tree li::after {
+  right: auto;
+  left: 50%;
+  border-left: 1px solid #ccc;
+} */
+
+
+/* .org_tree li:last-child {
+  border: 0 none;
+} */
+
+/* .org_tree li:first-child, */
